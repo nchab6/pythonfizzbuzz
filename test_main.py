@@ -1,22 +1,22 @@
 import unittest
-from main import main
-from io import StringIO
-import sys
+
+from main import multiply, divide
+
 
 class TestMain(unittest.TestCase):
-    def test_main_output(self):
-        # Redirect stdout to capture print output
-        captured_output = StringIO()
-        sys.stdout = captured_output
+    """
+    Assert that the multiply function returns the product of two numbers.
+    """
+    def test_multiply(self):
+        self.assertEqual(multiply(3, 4), 12)
 
-        # Call the main function
-        main()
 
-        # Reset redirect
-        sys.stdout = sys.__stdout__
+    """
+    Assert that the division function returns the division of two numbers.
+    """
+    def test_divide(self):
+        self.assertEqual(divide(12, 4), 3)
 
-        # Check if the output is as expected
-        self.assertEqual(captured_output.getvalue().strip(), "Hello world")
 
 if __name__ == '__main__':
     unittest.main()
